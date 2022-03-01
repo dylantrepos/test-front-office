@@ -1,0 +1,342 @@
+$primary: #0d6efd;
+$danger: #fd0d0d;
+$grey: rgb(82, 82, 82);
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+
+.btn-primary {
+    background-color: white;
+    padding: .5rem 2rem;
+    border-radius: 5rem;
+    border: solid 2px $primary;
+    font-size: 1.2rem;
+    transition: all .5s;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: $primary;
+        color: white;
+        box-shadow: $primary 0px 10px 20px -10px;
+        transition: all .2s;
+    }
+}
+
+.btn-danger {
+    background-color: white;
+    padding: .5rem 2rem;
+    border-radius: 5rem;
+    border: solid 2px $danger;
+    font-size: 1.2rem;
+    transition: all .5s;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: $danger;
+        color: white;
+        box-shadow: $danger 0px 10px 20px -10px;
+        transition: all .2s;
+    }
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    padding: 2rem 2rem 2rem 10rem;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 1rem;
+}
+
+@media screen and (max-width: 750px) {
+    .container {
+      padding: 2rem 0;
+    }
+  }
+
+.left-block {
+    display: flex;
+    align-items: center;
+}
+
+.welcome {
+    h1 {
+        font-size: 3rem;
+        color: $primary;
+    }
+
+    p:nth-of-type(1){
+        font-size: 1.2rem;
+        margin: 1rem 0 2rem;
+        color: $grey;
+    }
+
+    p:nth-of-type(2){
+        font-size: 1rem;
+        color: $grey;
+        margin: 2rem 0 1.5rem;
+    }
+
+}
+
+.form-block {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.right-block {
+    border: solid 1px rgb(238, 238, 238);
+    width: 80%;
+    height: fit-content;
+    padding: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 25px;
+    background: #fcfcfc;
+    box-shadow:  -20px -20px 60px #cccccc,
+                 20px 20px 60px #ffffff;
+
+}
+
+
+@media screen and (max-width: 1050px) {
+
+    .container {
+        padding: 2rem 2rem 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left-block {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .welcome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p.text {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin-bottom: 2rem;
+        }
+    }
+    .form-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    
+}
+
+@media screen and (max-width: 750px) {
+    .right-block {
+      padding: 2rem 2rem;
+    }
+  }
+
+.form {
+    width: 100%;
+    height: 100%;
+}
+
+input[name=dob] {
+    width: 100%;
+    background-color: white;
+}
+
+form {
+    position: relative;
+    
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    margin: .5rem 0;;
+
+    label {
+        margin-bottom: .5rem;
+    }
+
+    input {
+        padding: .8rem 1rem;
+        border-radius: .5rem;
+        border: 1px solid black;
+        font-size: 1rem;
+    }
+
+    .errors {
+        font-size: .8rem;   
+        color: red;
+        margin: .3rem 0;
+    }
+
+}
+
+.success-form {
+    background-color: rgba(175, 231, 175, 0.479);
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    border: green 1px solid;
+    box-shadow: rgba(112, 219, 112, 0.479) 0px 10px 20px -10px;
+    margin-bottom: 1.5rem;
+
+    backdrop-filter: blur(20px);
+}
+
+
+.error-form {
+    background-color: rgba(255, 221, 221, 0.479);
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    border: rgb(128, 0, 0) 1px solid;
+    box-shadow: rgba(219, 112, 112, 0.479) 0px 10px 20px -10px;
+    margin-bottom: 1.5rem;
+
+}
+
+.link {
+    color: blue;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.connected-block {
+    margin: 5rem;
+    margin-top: 2rem;
+
+    .connected-header {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .connected-title {
+        font-size: 2.5rem;
+    }
+
+    .connected-name {
+        color: $primary
+    }
+
+    .form {
+        width: 500px;
+    }
+
+    form {
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .delete {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 1050px) {
+        button {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        .connected-header {
+            flex-direction: column;
+        }
+
+        .connected-title {
+            margin-bottom: 2rem;
+        }
+      }
+
+    @media screen and (max-width: 500px) {
+        .connected-title {
+            font-size: 2em;
+        }
+      }
+}
+
+/* From cssbuttons.io */
+button {
+    padding: 1em 3em;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid $primary;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+   }
+   
+   button:hover {
+    background-color: $primary;
+    box-shadow: 0px 15px 20px rgba(46, 141, 229, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+   }
+   
+   button:active {
+    transform: translateY(-1px);
+   }
+
+.btn-danger {
+    padding: 1em 3em;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid $danger;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+   }
+   
+   btn-danger:hover {
+    background-color: $danger;
+    box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+   }
+   
+   btn-danger:active {
+    transform: translateY(-1px);
+   }
