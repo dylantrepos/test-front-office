@@ -22,6 +22,7 @@ export default function LoginForm () {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify({email: data.email.toLowerCase(), password: data.password})
         }, { withCredentials: true })
         .then((data) =>  data.json())
