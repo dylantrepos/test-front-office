@@ -22,35 +22,38 @@ export default function Connected() {
     city: ''
   })
 
+  const callAPI = () => {
+    fetch('https://test-back-office-api.herokuapp.com/users/login', {
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    })
+      .then(data => data.json())
+      .then(data => {
+        if(data){
+          if(data.authenticated) {
+           ( async () => {
+            const accountAlreadyExists = await fetch(`https://test-back-office-api.herokuapp.com/users/get/${data.userid}`).
+                  then((data) => data.json()).
+                  then((user) => (user))
+            setUser(accountAlreadyExists)  
+            setUserForm({...userForm, 
+              name: accountAlreadyExists.name,
+              dob: accountAlreadyExists.dob,
+              city: accountAlreadyExists.city
+            })                
+            setLoad(false);
+          })()                
+          } else {
+            setLoggedIn(false)
+          } 
+          setLoggedIn(true);
+        }
+      })
+  }
+
   useEffect(() => {
-      fetch('https://test-back-office-api.herokuapp.com/users/login', {
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include'
-          })
-            .then(data => data.json())
-            .then(data => {
-              if(data){
-                if(data.authenticated) {
-                 ( async () => {
-                  const accountAlreadyExists = await fetch(`https://test-back-office-api.herokuapp.com/users/get/${data.userid}`).
-                        then((data) => data.json()).
-                        then((user) => (user))
-                  setUser(accountAlreadyExists)  
-                  setUserForm({...userForm, 
-                    name: accountAlreadyExists.name,
-                    dob: accountAlreadyExists.dob,
-                    city: accountAlreadyExists.city
-                  })                
-                  setLoad(false);
-                })()                
-                } else {
-                  setLoggedIn(false)
-                } 
-                setLoggedIn(true);
-              }
-            })
-      
-  }, [onSubmit])
+      callAPI()
+  }, [])
 
   const onDisconnect = () => {
     removeCookie();
@@ -66,7 +69,8 @@ export default function Connected() {
     if(userForm.password.length > 0) userSend = {...userSend, password: userForm.password}
     const url = `https://test-back-office-api.herokuapp.com/users/${user._id}`;
     postData("PUT", url, userSend);
-    toastSuccess("Your modifications has been saved !")
+    toastSuccess("Your modifications has been saved !");
+    callAPI();
   }
 
   const onDelete = async () => {
