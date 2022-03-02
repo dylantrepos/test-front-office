@@ -50,7 +50,7 @@ export default function Connected() {
               }
             })
       
-  }, [])
+  }, [onSubmit])
 
   const onDisconnect = () => {
     removeCookie();
