@@ -23,7 +23,7 @@ export default function Connected() {
   })
 
   useEffect(() => {
-      fetch('http://localhost:5500/users/login', {
+      fetch('https://test-back-office-api.herokuapp.com/users/login', {
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include'
           })
@@ -32,7 +32,7 @@ export default function Connected() {
               if(data){
                 if(data.authenticated) {
                  ( async () => {
-                  const accountAlreadyExists = await fetch(`http://localhost:5500/users/get/${data.userid}`).
+                  const accountAlreadyExists = await fetch(`https://test-back-office-api.herokuapp.com/users/get/${data.userid}`).
                         then((data) => data.json()).
                         then((user) => (user))
                   setUser(accountAlreadyExists)  
@@ -64,14 +64,14 @@ export default function Connected() {
                           city: userForm.city
                       };
     if(userForm.password.length > 0) userSend = {...userSend, password: userForm.password}
-    const url = `http://localhost:5500/users/${user._id}`;
+    const url = `https://test-back-office-api.herokuapp.com/${user._id}`;
     postData("PUT", url, userSend);
     toastSuccess("Your modifications has been saved !")
   }
 
   const onDelete = async () => {
     const resultat = window.confirm('Are you sure about deleting your account ?')
-    const url = `http://localhost:5500/users/${user._id}`;
+    const url = `https://test-back-office-api.herokuapp.com/users/${user._id}`;
     if(resultat) {
       postData("DELETE", url, {});
        onDisconnect()
