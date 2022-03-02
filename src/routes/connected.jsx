@@ -64,7 +64,7 @@ export default function Connected() {
                           city: userForm.city
                       };
     if(userForm.password.length > 0) userSend = {...userSend, password: userForm.password}
-    const url = `https://test-back-office-api.herokuapp.com/${user._id}`;
+    const url = `https://test-back-office-api.herokuapp.com/users/${user._id}`;
     postData("PUT", url, userSend);
     toastSuccess("Your modifications has been saved !")
   }
