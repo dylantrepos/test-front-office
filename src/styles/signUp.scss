@@ -267,6 +267,9 @@ form {
         button {
             width: 100%;
         }
+        .btn-logout {
+            width: fit-content;
+        }
     }
 
     @media screen and (max-width: 750px) {
@@ -340,3 +343,5 @@ button {
    btn-danger:active {
     transform: translateY(-1px);
    }
+
+   
